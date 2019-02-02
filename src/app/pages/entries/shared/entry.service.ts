@@ -7,16 +7,16 @@ import { Entry } from './entry.model';
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService {
+export class EntryService {
 
-  private apiPath = 'api/categories';
+  private apiPath = 'api/entries';
 
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Entry[]> {
     return this.http.get(this.apiPath).pipe(
       catchError(this.handleError),
-      map(this.jsonDataToCategories)
+      map(this.jsonDataToEntries)
     );
   }
 
@@ -24,14 +24,14 @@ export class CategoryService {
     const url = `${this.apiPath}/${id}`;
 
     return this.http.get(url).pipe(
-      map(this.jsonDataToCategory.bind(this)),
+      map(this.jsonDataToEntry.bind(this)),
       catchError(this.handleError)
     );
   }
 
   create(category: Entry): Observable<Entry> {
     return this.http.post(this.apiPath, category).pipe(
-      map(this.jsonDataToCategory.bind(this)),
+      map(this.jsonDataToEntry.bind(this)),
       catchError(this.handleError)
     );
   }
@@ -54,16 +54,17 @@ export class CategoryService {
     );
   }
 
-  private jsonDataToCategories(jsonData: any[]): Entry[] {
-    const categories: Entry[] = [];
-    jsonData.forEach(
-      element => categories.push( element as Entry )
-    );
-    return categories;
+  private jsonDataToEntries(jsonData: any[]): Entry[] {
+    const entries: Entry[] = [];
+    jsonData.forEach( element => {
+      const entry = Object.assign(new Entry(), element);
+      entries.push(entry);      
+    });
+    return entries;
   }
 
-  protected jsonDataToCategory(jsonData: any): Entry {
-    return jsonData as Entry;
+  protected jsonDataToEntry(jsonData: any): Entry {
+    return Object.assign(Entry, jsonData);
   }
 
   private handleError(error: any): Observable<any> {
