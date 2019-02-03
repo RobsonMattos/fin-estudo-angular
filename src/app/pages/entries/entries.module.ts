@@ -4,14 +4,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { EntriesRoutingModule } from './entries-routing.module';
 import { EntriesListComponent } from './entries-list/entries-list.component';
-import { EntriesFormComponent } from './entries-form/entries-form.component';
+import { EntryFormComponent } from './entries-form/entry-form.component';
+
+import {CalendarModule} from 'primeng/calendar';
+import {IMaskModule} from 'angular-imask';
 
 @NgModule({
-  declarations: [EntriesListComponent, EntriesFormComponent],
+  declarations: [EntriesListComponent, EntryFormComponent],
   imports: [
     CommonModule,
     EntriesRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CalendarModule,
+    IMaskModule
   ]
 })
 export class EntriesModule { }
