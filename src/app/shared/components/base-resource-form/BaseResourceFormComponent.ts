@@ -78,7 +78,6 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     }
   }
 
-
   protected setPageTitle() {
     if (this.currentAction == 'new')
       this.pageTitle = this.creationPageTitle();
@@ -87,12 +86,12 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     }
   }
 
-  protected creationPageTitle(): string{
-    return "Novo"
+  protected creationPageTitle(): string {
+    return 'Novo';
   }
 
-  protected editionPageTitle(): string{
-    return "Edição"
+  protected editionPageTitle(): string {
+    return 'Edição';
   }
 
 
@@ -106,7 +105,6 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       )
   }
 
-
   protected updateResource(){
     const resource: T = this.jsonDataToResourceFn(this.resourceForm.value);
 
@@ -117,7 +115,6 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
       )
   }
 
-  
   protected actionsForSuccess(resource: T){
     toastr.success("Solicitação processada com sucesso!");
 
@@ -129,7 +126,6 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     )
   }
 
-
   protected actionsForError(error){
     toastr.error("Ocorreu um erro ao processar a sua solicitação!");
 
@@ -140,7 +136,6 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     else
       this.serverErrorMessages = ["Falha na comunicação com o servidor. Por favor, tente mais tarde."]
   }
-
 
   protected abstract buildResourceForm(): void;
 }
