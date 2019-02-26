@@ -3,7 +3,7 @@ import { Injectable, Injector } from '@angular/core';
 import { CategoryService } from "../../categories/shared/category.service";
 
 import { Entry } from "./entry.model";
-import { BaseResourceService } from 'src/app/shared/services/base-resources.service';
+import { BaseResourceService } from 'src/app/shared/services/base-resource.service';
 import { Observable } from 'rxjs';
 import { flatMap, catchError } from 'rxjs/operators';
 

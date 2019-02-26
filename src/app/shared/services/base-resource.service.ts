@@ -1,4 +1,4 @@
-import { BaseResourceModel } from '../models/base-resources.model';
+import { BaseResourceModel } from '../models/base-resource.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError, flatMap } from 'rxjs/operators';
