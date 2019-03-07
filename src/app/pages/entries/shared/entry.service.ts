@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import { Observable, throwError } from 'rxjs';
-import { map, catchError, flatMap } from 'rxjs/operators';
-
-import { CategoryService } from '../../categories/shared/category.service';
-
-import { Entry } from './entry.model';
-=======
 import { Injectable, Injector } from '@angular/core';
 
 import { Observable } from "rxjs";
@@ -20,7 +9,7 @@ import { Entry } from "./entry.model";
 
 import * as moment from "moment"
 
->>>>>>> project-improvements
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +18,7 @@ export class EntryService extends BaseResourceService<Entry> {
   constructor(protected injector: Injector, private categoryService: CategoryService) { 
     super("api/entries", injector, Entry.fromJson);
   }
+
 
   create(entry: Entry): Observable<Entry> {
     return this.setCategoryAndSendToServer(entry, super.create.bind(this));
@@ -43,6 +33,7 @@ export class EntryService extends BaseResourceService<Entry> {
       map(entries => this.filterByMonthAndYear(entries, month, year))
     )
   }
+
 
   private setCategoryAndSendToServer(entry: Entry, sendFn: any): Observable<Entry>{
     return this.categoryService.getById(entry.categoryId).pipe(
